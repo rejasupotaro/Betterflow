@@ -53,7 +53,7 @@ init = ->
   music_player.src = music_list[Math.floor(Math.random() * music_list.length)]
 
   scratch_player = $("audio#scratch_player")[0]
-  scratch_player.volume = 0.25
+  #scratch_player.volume = 0.5
 
   set_background_image = ->
     background_image.style.backgroundImage = build_url(gif_list[Math.floor(Math.random() * gif_list.length)])
