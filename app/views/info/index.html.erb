@@ -1,8 +1,40 @@
 <div id="gif_bg"></div>
+<div id="bg_cover"></div>
 <header></header>
-<div id=bg_cover></div>
+
+<table id="panels">
+  <tr>
+    <td id="panel">
+      <img src="/assets/icon.png" width="180px" height="180px" align="center">
+    </td>
+    <td id="panel" onclick="open_new_tab('https://github.com/takiguchi0817')">
+      <img src="/assets/github_logo.png" width="180px" height="180px" align="center">
+    </td>
+  </tr>
+  <tr>
+    <td id="panel">
+    </td>
+    <td id="panel" onclick="open_new_tab('https://twitter.com/rejasupotaro')">
+      <img src="/assets/twitter_logo.png" width="180px" height="180px" align="center">
+    </td>
+  </tr>
+  <tr>
+    <td id="panel" onclick="open_new_tab('http://takiguchi0817.github.com/')">
+      <img src="/assets/blog_logo.png" width="180px" height="180px" align="center">
+    </td>
+    <td id="panel">
+    </td>
+  </tr>
+</table>
+
+<!--
+コンテンツの要素って？
+・アイコン
+・twitter
+・github
+・blog
+-->
+
 <audio id="music_player"></audio>
-<audio id="scratch_player">
-  <source src="/assets/scratch.wav">
-</audio>
+<audio id="scratch_player" src="/assets/scratch.wav"></audio>
 <footer></footer>

@@ -73,5 +73,9 @@ init = ->
 
   play_music()
 
+root = exports ? this
+root.open_new_tab = (url) ->
+  window.open(url)
+
 window.onload = ->
   init()
