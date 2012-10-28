@@ -62,21 +62,23 @@ footer {
   -moz-transition: opacity 0.5s;
   opacity: 0.8;
   border-spacing: 16px;
-  width: 360px;
-  height: 540px;
+  width: 350px;
+  height: 530px;
   float: left;
 }
 
 #panel {
   background-color: #1BA1E2;
-  width: 176px;
-  height: 176px;
   cursor: pointer;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
 
 #panel_image {
-  width: 176px;
-  height: 176px;
+  width: 120px;
+  height: 120px;
+  vertical-align: middle;
 }
 
 #better_flow {
