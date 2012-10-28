@@ -61,7 +61,7 @@ footer {
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   opacity: 0.8;
-  border-spacing: 14px;
+  border-spacing: 16px;
   width: 360px;
   height: 540px;
   float: left;
@@ -69,9 +69,14 @@ footer {
 
 #panel {
   background-color: #1BA1E2;
-  width: 180px;
-  height: 180px;
+  width: 176px;
+  height: 176px;
   cursor: pointer;
+}
+
+#panel_image {
+  width: 176px;
+  height: 176px;
 }
 
 #better_flow {
