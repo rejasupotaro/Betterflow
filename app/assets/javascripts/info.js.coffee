@@ -1,10 +1,8 @@
 gif_list = [
   "http://gifsoup.com/webroot/animatedgifs/202105_o.gif"
   "http://ladygaga.glooce.com/wp-content/uploads/2012/08/tumblr_m2bsi5F22P1rowuemo1_500.gif"
-  "http://25.media.tumblr.com/tumblr_m5jqkkIA1B1rwk925o1_500.gif"
   "http://25.media.tumblr.com/tumblr_m57sh3WUZ01rq5hnqo1_500.gif"
   "http://25.media.tumblr.com/tumblr_m57pruaBVO1qkxr27o1_500.gif"
-  "http://25.media.tumblr.com/tumblr_m5fgp3Dmvr1rq4liyo1_500.gif"
   "http://25.media.tumblr.com/tumblr_m58rayl6wK1rr3wbgo3_250.gif"
   "http://25.media.tumblr.com/tumblr_m56fe3rZb51rq5hnqo3_250.gif"
   "http://25.media.tumblr.com/tumblr_m56f3t5zRR1rq5hnqo1_400.gif"
@@ -19,6 +17,16 @@ gif_list = [
   "http://24.media.tumblr.com/tumblr_m43a8eRCYj1rq5hnqo1_400.gif"
   "http://25.media.tumblr.com/tumblr_m3xyjw5TCG1rw2f00o4_250.gif"
   "http://media.tumblr.com/tumblr_m3mfconNUy1rouzv7.gif"
+  "http://i939.photobucket.com/albums/ad232/letybruno/crystal-lady-gaga.gif"
+  "http://fc03.deviantart.net/fs70/f/2010/078/f/8/Gaga_Cig_Glasses_Gif_BIG_by_MegaPaperGirl.gif"
+  "http://images2.fanpop.com/image/photos/11100000/telephone-lady-gaga-11122126-400-224.gif"
+  "http://fc09.deviantart.net/fs71/f/2010/315/3/9/bad_romance_lady_gaga_gif_by_ayaseyukiya02-d32n0b8.gif"
+  "http://28.media.tumblr.com/tumblr_l4svmlR6ft1qc2jhfo1_400.gif"
+  "http://26.media.tumblr.com/tumblr_lbi9j57E1m1qb0bobo1_500.gif"
+  "http://25.media.tumblr.com/tumblr_lugq7eoMSc1r6ngxto1_500.gif"
+  "http://legacy-cdn.smosh.com/smosh-pit/012011/gaga-whale.gif"
+  "https://lh4.googleusercontent.com/-NRF8W44lMck/TcQIos-NL_I/AAAAAAAAAeM/V3tWJ_zvNzU/s288/JUDAS6.gif"
+  "http://images4.fanpop.com/image/photos/19300000/Lady-GIF-lady-gaga-19306723-500-254.gif?1351354431932"
 ]
 
 music_list = [
@@ -37,8 +45,9 @@ music_list = [
 ]
 
 class Track
-  constructor: (@artist_name, @track_name, @release_date, @preview_url, @jacket_image_url, @track_view_url) ->
-  
+  constructor: (@artist_name = "----", @track_name = "----", @release_date = "----",
+    @preview_url, @jacket_image_url, @track_view_url) ->
+
   get_preview_url: ->
     @preview_url
 
@@ -53,6 +62,9 @@ class Track
 
   get_jacket_image_url: ->
     @jacket_image_url
+
+  get_track_view_url: ->
+    @track_view_url
 
 sample_json1 = {
   "artistName": "Lady GaGa",
@@ -130,22 +142,24 @@ window.onload = ->
       $("#track_top_title")[0].style.fontSize = "52px"
       $("#track_top_title")[0].innerHTML = track_name
 
-    $("#track_name")[0].innerHTML = track_name 
+    $("#track_name")[0].innerHTML = track_name
 
     artist_name = track.get_artist_name()
-    $("#artist_name")[0].innerHTML = artist_name 
+    $("#artist_name")[0].innerHTML = artist_name
 
     release_date = track.get_release_date()
     $("#release_date")[0].innerHTML = release_date
 
     jacket_image_url = track.get_jacket_image_url()
     $("#jacket_image")[0].src = jacket_image_url
+    $("#jacket_image")[0].href = track.get_track_view_url()
   track = track_list[playing_track_index]
 
   play_music = ->
     set_track_info(track_list[playing_track_index])
     music_player.play()
   play_scratch = ->
+    set_track_info(new Track())
     background_image.style.backgroundImage = "url(/assets/tv_noise.gif)"
     scratch_player.play()
 
@@ -161,4 +175,4 @@ window.onload = ->
 
   play_music()
 
-console.log "ChromeとSafariでしか動作確認をしていません。FireFoxはたぶんコーデックが対応していないので音はならないと思います。"
+console.log "ChromeとSafariでしか動作確認をしていません。FireFoxはたぶんコーデックが対応していないので音がならないと思います。"
