@@ -2,38 +2,50 @@
 <div id="bg_cover"></div>
 <header></header>
 
-<table id="panels">
-  <tr>
-    <td id="panel">
-      <img src="/assets/icon.png" width="180px" height="180px" align="center">
-    </td>
-    <td id="panel" onclick="open_new_tab('https://github.com/takiguchi0817')">
-      <img src="/assets/github_logo.png" width="180px" height="180px" align="center">
-    </td>
-  </tr>
-  <tr>
-    <td id="panel">
-    </td>
-    <td id="panel" onclick="open_new_tab('https://twitter.com/rejasupotaro')">
-      <img src="/assets/twitter_logo.png" width="180px" height="180px" align="center">
-    </td>
-  </tr>
-  <tr>
-    <td id="panel" onclick="open_new_tab('http://takiguchi0817.github.com/')">
-      <img src="/assets/blog_logo.png" width="180px" height="180px" align="center">
-    </td>
-    <td id="panel">
-    </td>
-  </tr>
-</table>
-
-<!--
-コンテンツの要素って？
-・アイコン
-・twitter
-・github
-・blog
--->
+<div id="container">
+  <table id="panels">
+    <tr>
+      <td id="panel">
+        <img src="/assets/icon.png" width="180px" height="180px" align="center">
+      </td>
+      <td id="panel" onclick="open_new_tab('https://github.com/takiguchi0817')">
+        <img src="/assets/github_logo.png" width="180px" height="180px" align="center">
+      </td>
+    </tr>
+    <tr>
+      <td id="panel">
+      </td>
+      <td id="panel" onclick="open_new_tab('https://twitter.com/rejasupotaro')">
+        <img src="/assets/twitter_logo.png" width="180px" height="180px" align="center">
+      </td>
+    </tr>
+    <tr>
+      <td id="panel" onclick="open_new_tab('http://takiguchi0817.github.com/')">
+        <img src="/assets/blog_logo.png" width="180px" height="180px" align="center">
+      </td>
+      <td id="panel">
+      </td>
+    </tr>
+  </table>
+  <div id="better_flow">
+    <div id="track_top_title">Poker Face</div>
+    <table id="track_info">
+      <tr id="track_info_header">
+        <td id="artist_name">Artist Name</td>
+        <td id="track_name">Track Name</td>
+        <td id="release_date">Release Date</td>
+      </tr>
+      <tr id="track_info_body">
+        <td id="artist_name">Lady Gaga</td>
+        <td id="track_name">Poker Face</td>
+        <td id="release_date">2008</td>
+      </tr>
+    </table>
+    <div id="jacket_image_wrapper">
+      <img id="jacket_image" src="http://a1632.phobos.apple.com/us/r1000/005/Video/de/ae/d3/mzi.wkfmmxrw.100x100-75.jpg">
+    </div>
+  </div>
+</div>
 
 <audio id="music_player"></audio>
 <audio id="scratch_player" src="/assets/scratch.wav"></audio>

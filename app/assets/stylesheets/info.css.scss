@@ -1,3 +1,8 @@
+* {
+  color: white;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
 #gif_bg {
   position: fixed;
   z-index: -100;
@@ -28,7 +33,6 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  color: white;
   background-color: black;
   width: 100%;
   height: 45px;
@@ -42,10 +46,14 @@ footer {
   position: absolute;
   bottom: 0;
   left: 0;
-  color: white;
   background-color: black;
   width: 100%;
   height: 45px;
+}
+
+#container {
+  margin: auto 0;
+  padding-top: 60px;
 }
 
 #panels {
@@ -53,20 +61,60 @@ footer {
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   opacity: 0.8;
-  position: absolute;
-  top: 60px;
-  left: 15px;
   border-spacing: 14px;
   width: 360px;
   height: 540px;
+  float: left;
 }
 
 #panel {
-  margin: auto;
-  color: black;
   background-color: #1BA1E2;
   width: 180px;
   height: 180px;
   cursor: pointer;
 }
+
+#better_flow {
+  padding: 14px;
+  float: left;
+}
+
+#track_top_title {
+  font-size: 96px;
+}
+
+#track_info {
+  font-size: 28px;
+  width: 640px;
+}
+
+#track_info_header {
+  font-size: 24px;
+  opacity: 0.8;
+  background-color: #222222;
+}
+
+#track_info_body {
+}
+
+#artist_name #track_name #release_date {
+}
+
+#jacket_image_wrapper {
+  width: 640px;
+  height: 392px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#jacket_image {
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  vertical-align: middle;
+}
+
+
 

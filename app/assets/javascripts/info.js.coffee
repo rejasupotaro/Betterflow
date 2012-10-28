@@ -1,3 +1,15 @@
+sample_json = {
+  "artistName": "Lady GaGa",
+  "trackName": "Poker Face",
+  "artistViewUrl": "https://itunes.apple.com/us/artist/lady-gaga/id277293880?uo=4",
+  "trackViewUrl": "https://itunes.apple.com/us/music-video/poker-face/id294538235?uo=4",
+  "previewUrl": "http://a782.v.phobos.apple.com/us/r1000/034/Video/90/65/57/mzm.nmnvboco..640x464.h264lc.u.p.m4v",
+  "artworkUrl": "http://a1632.phobos.apple.com/us/r1000/005/Video/de/ae/d3/mzi.wkfmmxrw.100x100-75.jpg",
+  "releaseDate": "2008-10-22T07:00:00Z",
+  "country": "USA",
+  "primaryGenreName": "Pop"
+}
+
 init = ->
   gif_list = [
     #"http://kksg.net/data/gif/77c7a08e4380318759b76eba8350b4d6",
@@ -65,6 +77,7 @@ init = ->
   set_background_image()
 
   music_player.addEventListener("ended", ->
+    background_image.style.backgroundImage = "url(http://blog-imgs-43.fc2.com/m/m/a/mmasamurai/tv_noise.gif)"
     play_scratch()
     music_player.src = music_list[Math.floor(Math.random() * 3)])
   scratch_player.addEventListener("ended", ->
