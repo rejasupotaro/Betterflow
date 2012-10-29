@@ -66,47 +66,6 @@ class Track
   get_track_view_url: ->
     @track_view_url
 
-sample_json1 = {
-  "artistName": "Lady GaGa",
-  "trackName": "Poker Face",
-  "trackViewUrl": "https://itunes.apple.com/us/music-video/poker-face/id294538235?uo=4",
-  "previewUrl": "http://a782.v.phobos.apple.com/us/r1000/034/Video/90/65/57/mzm.nmnvboco..640x464.h264lc.u.p.m4v",
-  "artworkUrl": "http://a1632.phobos.apple.com/us/r1000/005/Video/de/ae/d3/mzi.wkfmmxrw.100x100-75.jpg",
-  "releaseDate": "2008-10-22T07:00:00Z",
-}
-
-sample_json2 = {
-  "artistName": "Lady GaGa",
-  "trackName": "The Edge of Glory",
-  "trackViewUrl": "https://itunes.apple.com/us/music-video/the-edge-of-glory/id444524382?uo=4",
-  "previewUrl": "http://a223.v.phobos.apple.com/us/r1000/118/Video/b8/e9/52/mzi.tjdfdqsz..640x256.h264lc.u.p.m4v",
-  "artworkUrl": "http://a370.phobos.apple.com/us/r1000/100/Video/8b/7c/68/mzi.shewzoty.100x100-75.jpg",
-  "releaseDate": "2011-06-17T07:00:00Z",
-}
-
-sample_json3 = {
-  "artistName": "Lady GaGa",
-  "trackName": "Beautiful, Dirty, Rich",
-  "trackViewUrl": "https://itunes.apple.com/us/music-video/beautiful-dirty-rich/id294351882?uo=4",
-  "previewUrl": "http://a273.v.phobos.apple.com/us/r1000/040/Video/d6/dc/7b/mzm.ydwyekmd..640x352.h264lc.u.p.m4v",
-  "artworkUrl": "http://a650.phobos.apple.com/us/r1000/004/Video/0e/07/fe/mzi.olauxiar.100x100-75.jpg",
-  "releaseDate": "2008-10-21T07:00:00Z",
-}
-
-track_list = []
-sample_json = sample_json1
-for i in [0..3]
-  track_list[i] = new Track(sample_json.artistName, sample_json.trackName, sample_json.releaseDate,
-    music_list[i], sample_json.artworkUrl, sample_json.trackViewUrl)
-sample_json = sample_json2
-for i in [4..7]
-  track_list[i] = new Track(sample_json.artistName, sample_json.trackName, sample_json.releaseDate,
-    music_list[i], sample_json.artworkUrl, sample_json.trackViewUrl)
-sample_json = sample_json3
-for i in [8..11]
-  track_list[i] = new Track(sample_json.artistName, sample_json.trackName, sample_json.releaseDate,
-    music_list[i], sample_json.artworkUrl, sample_json.trackViewUrl)
-
 get_random = (max) ->
   Math.floor(Math.random() * max)
 
@@ -119,12 +78,10 @@ root.open_new_tab = (url) ->
 
 window.onload = ->
   background_image = $("#gif_bg")[0]
-
   music_player = $("audio#music_player")[0]
-  playing_track_index = get_random(track_list.length)
-  music_player.src = track_list[playing_track_index].get_preview_url()
-
   scratch_player = $("audio#scratch_player")[0]
+  track_list = []
+  playing_track_index = 0
 
   set_background_image_random = ->
     background_image.style.backgroundImage =
@@ -153,7 +110,6 @@ window.onload = ->
     jacket_image_url = track.get_jacket_image_url()
     $("#jacket_image")[0].src = jacket_image_url
     $("#jacket_image")[0].href = track.get_track_view_url()
-  track = track_list[playing_track_index]
 
   play_music = ->
     set_track_info(track_list[playing_track_index])
@@ -162,7 +118,6 @@ window.onload = ->
     set_track_info(new Track())
     background_image.style.backgroundImage = "url(/assets/tv_noise.gif)"
     scratch_player.play()
-
 
   music_player.addEventListener("ended", ->
     play_scratch()
@@ -173,6 +128,38 @@ window.onload = ->
     play_music()
     set_background_image_random())
 
-  play_music()
+  on_receive_track_list = (data) ->
+    sample_json = data[0]
+    for i in [0..3]
+      track_list[i] = new Track(sample_json.artistName, sample_json.trackName, sample_json.releaseDate,
+        music_list[i], sample_json.artworkUrl, sample_json.trackViewUrl)
+    sample_json = data[1]
+    for i in [4..7]
+      track_list[i] = new Track(sample_json.artistName, sample_json.trackName, sample_json.releaseDate,
+        music_list[i], sample_json.artworkUrl, sample_json.trackViewUrl)
+    sample_json = data[2]
+    for i in [8..11]
+      track_list[i] = new Track(sample_json.artistName, sample_json.trackName, sample_json.releaseDate,
+        music_list[i], sample_json.artworkUrl, sample_json.trackViewUrl)
+
+    playing_track_index = get_random(track_list.length)
+    music_player.src = track_list[playing_track_index].get_preview_url()
+    track = track_list[playing_track_index]
+
+    play_music()
+
+  get_track_list = ->
+    $.ajax({
+      type: "GET",
+      url: "/api/get_track_list",
+      dataType: "json"
+      success: (data, textStatus, jqXHR) ->
+        on_receive_track_list(data)
+      error: (jqXHR, textStatus, errorThrown) ->
+        console.log "failed to request get_track_list"
+    })
+
+  get_track_list()
+  #play_music()
 
 console.log "ChromeとSafariでしか動作確認をしていません。FireFoxはたぶんコーデックが対応していないので音がならないと思います。"
