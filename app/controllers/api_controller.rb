@@ -1,3 +1,5 @@
+require 'net/http'
+
 class ApiController < ApplicationController
   def get_track_list
     json_array = []
@@ -33,6 +35,29 @@ class ApiController < ApplicationController
     json_array.push(sample_json2)
     json_array.push(sample_json3)
 
+    artist_name = 'lady gaga'
+    #res = get_track_list_by_artist(artist_name)
+
     render :json => json_array
+  end
+
+  def get_track_list_by_artist(artist_name)
+    
+
+    puts "-----get_track_list_by_artist-----"
+    host = 'itunes.apple.com'
+    path = '/search?term=' + CGI::escape(artist_name)
+
+    http = Net::HTTP.new(host, 80)
+    puts http
+    req = Net::HTTP::Get.new(path)
+    puts req
+    res = http.request(req)
+    hash = JSON.parse(res.body)
+    puts hash
+    json = JSON.generate(hash)
+    puts json
+
+    return json
   end
 end
