@@ -26,6 +26,14 @@ gif_list = [
   "/assets/gifs/gaga24.gif"
   "/assets/gifs/gaga25.gif"
   "/assets/gifs/gaga26.gif"
+  "/assets/gifs/gaga27.gif"
+  "/assets/gifs/gaga28.gif"
+  "/assets/gifs/gaga29.gif"
+  "/assets/gifs/gaga30.gif"
+  "/assets/gifs/gaga33.gif"
+  "/assets/gifs/gaga34.gif"
+  "/assets/gifs/gaga35.gif"
+  "/assets/gifs/gaga37.gif"
 ]
 
 music_list = [
