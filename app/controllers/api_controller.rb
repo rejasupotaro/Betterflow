@@ -9,7 +9,7 @@ class ApiController < ApplicationController
       json_array = get_track_list_from_itunes(artist_name)
     end
 
-    render :json => json_array
+    render :json => JSON.generate(json_array)
   end
 
   def get_track_list_by_itunes(artist_name)
@@ -45,7 +45,7 @@ class ApiController < ApplicationController
       }
     end
 
-    return JSON.generate(json_array)
+    return json_array
   end
 
   def save_track_from_json(track_json)
