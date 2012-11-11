@@ -12,7 +12,7 @@ class ApiController < ApplicationController
     render :json => JSON.generate(json_array)
   end
 
-  def get_track_list_by_itunes(artist_name)
+  def get_track_list_from_itunes(artist_name)
     host = 'itunes.apple.com'
     path = '/search?term=' + CGI::escape(artist_name)
 
