@@ -25,7 +25,7 @@ class ApiController < ApplicationController
     if hash['resultCount'] > 0
       track_json_array = hash['results']
       track_json_array.each { |track_json|
-        if track_json['artistName'].downcase == "downcase"
+        if track_json['artistName'].downcase == artist_name
           save_track_from_json(track_json)
         end
       }
