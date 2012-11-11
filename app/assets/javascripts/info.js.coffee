@@ -83,23 +83,14 @@ window.onload = ->
 
   set_track_info = (track) ->
     track_name = track.get_track_name()
-    if track_name.length < 14
-      $("#track_top_title")[0].innerHTML = track_name
-    else
+    if track_name.length > 12
       $("#track_top_title")[0].style.fontSize = "60px"
-      $("#track_top_title")[0].innerHTML = track_name
-
+    $("#track_top_title")[0].innerHTML = track_name
     $("#track_name")[0].innerHTML = track_name
-
-    artist_name = track.get_artist_name()
-    $("#artist_name")[0].innerHTML = artist_name
-
-    release_date = track.get_release_date()
-    $("#release_date")[0].innerHTML = release_date
-
-    jacket_image_url = track.get_jacket_image_url()
-    $("#jacket_image")[0].src = jacket_image_url
-    $("#jacket_image")[0].href = track.get_track_view_url()
+    $("#artist_name")[0].innerHTML = track.get_artist_name()
+    $("#release_date")[0].innerHTML = track.get_release_date()
+    $("#jacket_image")[0].src = track.get_jacket_image_url()
+    $("#to_itunes_link")[0].href = track.get_track_view_url()
 
   play_music = ->
     set_track_info(track_list[playing_track_index])
