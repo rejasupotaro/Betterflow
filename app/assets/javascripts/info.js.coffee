@@ -34,8 +34,13 @@ gif_list = [
 ]
 
 class Track
-  constructor: (@artist_name = "----", @track_name = "----", @release_date = "----",
-    @preview_url, @jacket_image_url, @track_view_url) ->
+  constructor: (track_json = {}) ->
+    @artist_name = track_json.artist_name || "----"
+    @track_name = track_json.track_name || "----"
+    @release_date = track_json.release_date || "----"
+    @preview_url = track_json.preview_url || ""
+    @jacket_image_url = track_json.jacket_image_url || ""
+    @track_view_url = track_json.track_view_url || ""
 
   get_preview_url: ->
     @preview_url
@@ -73,19 +78,15 @@ window.onload = ->
   playing_track_index = 0
 
   set_background_image_random = ->
-    background_image.style.backgroundImage =
-      build_url(gif_list[get_random(gif_list.length)])
+    background_image.style.backgroundImage = build_url(gif_list[get_random(gif_list.length)])
   set_background_image_random()
 
   set_track_info = (track) ->
     track_name = track.get_track_name()
-    if track_name.length < 12
-      $("#track_top_title")[0].innerHTML = track_name
-    else if track_name.length < 18
-      $("#track_top_title")[0].style.fontSize = "60px"
+    if track_name.length < 14
       $("#track_top_title")[0].innerHTML = track_name
     else
-      $("#track_top_title")[0].style.fontSize = "52px"
+      $("#track_top_title")[0].style.fontSize = "60px"
       $("#track_top_title")[0].innerHTML = track_name
 
     $("#track_name")[0].innerHTML = track_name
@@ -117,11 +118,11 @@ window.onload = ->
     play_music()
     set_background_image_random())
 
-  on_receive_track_list = (data) ->
-    for i in [0..data.length]
-      track_json = data[i]
+  on_receive_track_list = (track_json_list) ->
+    for i in [0..track_json_list.length]
+      track_json = track_json_list[i]
       if track_json?
-        track_list[i] = new Track(track_json.artist_name, track_json.track_name, track_json.release_date, track_json.preview_url, track_json.jacket_image_url, track_json.track_view_url)
+        track_list[i] = new Track(track_json)
 
     playing_track_index = get_random(track_list.length)
     music_player.src = track_list[playing_track_index].get_preview_url()
@@ -137,10 +138,9 @@ window.onload = ->
       success: (data, textStatus, jqXHR) ->
         on_receive_track_list(data)
       error: (jqXHR, textStatus, errorThrown) ->
-        console.log "failed to request get_track_list"
+        console.log "Something is wrong..."
     })
 
   get_track_list()
-  #play_music()
 
 console.log "ChromeとSafariでしか動作確認をしていません。FireFoxはたぶんコーデックが対応していないので音がならないと思います。"
