@@ -33,22 +33,6 @@ gif_list = [
   "/assets/gifs/gaga33.gif"
   "/assets/gifs/gaga34.gif"
   "/assets/gifs/gaga35.gif"
-  "/assets/gifs/gaga37.gif"
-]
-
-music_list = [
-  "http://a1532.phobos.apple.com/us/r1000/110/Music/f6/81/50/mzm.awypklov.aac.p.m4a"
-  "http://a1542.phobos.apple.com/us/r1000/100/Music/b8/13/82/mzm.tmcgwtiy.aac.p.m4a"
-  "http://a1493.phobos.apple.com/us/r1000/100/Music/fd/ee/77/mzm.yaxakeuc.aac.p.m4a"
-  "http://a20.phobos.apple.com/us/r1000/080/Music/d2/02/c7/mzm.cwkqxzmt.aac.p.m4a"
-  "http://a1202.phobos.apple.com/us/r1000/106/Music/c2/d1/aa/mzm.pgjgerob.aac.p.m4a"
-  "http://a566.phobos.apple.com/us/r1000/080/Music/37/fc/0e/mzm.rgqeiahx.aac.p.m4a"
-  "http://a1393.phobos.apple.com/us/r1000/067/Music/e7/8b/12/mzm.pwdlffsd.aac.p.m4a"
-  "http://a52.phobos.apple.com/us/r1000/069/Music/26/92/47/mzm.yjngsbkh.aac.p.m4a"
-  "http://a51.phobos.apple.com/us/r1000/101/Music/b9/d7/44/mzm.rimfbjth.aac.p.m4a"
-  "http://a218.phobos.apple.com/us/r1000/105/Music/6b/7b/db/mzm.twliiqfh.aac.p.m4a"
-  "http://a1546.phobos.apple.com/us/r1000/117/Music/df/96/e1/mzm.lkfxjana.aac.p.m4a"
-  "http://a538.v.phobos.apple.com/us/r1000/020/Video/9a/5e/45/mzi.ppknphmj..640x352.h264lc.u.p.m4v"
 ]
 
 class Track
@@ -136,18 +120,10 @@ window.onload = ->
     set_background_image_random())
 
   on_receive_track_list = (data) ->
-    sample_json = data[0]
-    for i in [0..3]
-      track_list[i] = new Track(sample_json.artistName, sample_json.trackName, sample_json.releaseDate,
-        music_list[i], sample_json.artworkUrl, sample_json.trackViewUrl)
-    sample_json = data[1]
-    for i in [4..7]
-      track_list[i] = new Track(sample_json.artistName, sample_json.trackName, sample_json.releaseDate,
-        music_list[i], sample_json.artworkUrl, sample_json.trackViewUrl)
-    sample_json = data[2]
-    for i in [8..11]
-      track_list[i] = new Track(sample_json.artistName, sample_json.trackName, sample_json.releaseDate,
-        music_list[i], sample_json.artworkUrl, sample_json.trackViewUrl)
+    for i in [0..data.length]
+      track_json = data[i]
+      if track_json?
+        track_list[i] = new Track(track_json.artist_name, track_json.track_name, track_json.release_date, track_json.preview_url, track_json.jacket_image_url, track_json.track_view_url)
 
     playing_track_index = get_random(track_list.length)
     music_player.src = track_list[playing_track_index].get_preview_url()
