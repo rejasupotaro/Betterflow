@@ -39,7 +39,7 @@ class Track
     @track_name = track_json.track_name || "----"
     @release_date = track_json.release_date || "----"
     @preview_url = track_json.preview_url || ""
-    @jacket_image_url = track_json.jacket_image_url || ""
+    @jacket_image_url = track_json.jacket_image_url
     @track_view_url = track_json.track_view_url || ""
 
   get_preview_url: ->
