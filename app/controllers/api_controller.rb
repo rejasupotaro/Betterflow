@@ -33,7 +33,7 @@ class ApiController < ApplicationController
       p "Oh... Something is wrong......"
     end
 
-    return track_json_array
+    return get_track_list_from_db()
   end
 
   def get_track_list_from_db
