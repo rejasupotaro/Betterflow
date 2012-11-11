@@ -19,8 +19,6 @@ gif_list = [
   "/assets/gifs/gaga17.gif"
   "/assets/gifs/gaga18.gif"
   "/assets/gifs/gaga19.gif"
-  "/assets/gifs/gaga20.gif"
-  "/assets/gifs/gaga21.gif"
   "/assets/gifs/gaga22.gif"
   "/assets/gifs/gaga23.gif"
   "/assets/gifs/gaga24.gif"
