@@ -31,6 +31,10 @@ gif_list = [
   "/assets/gifs/gaga33.gif"
   "/assets/gifs/gaga34.gif"
   "/assets/gifs/gaga35.gif"
+  "/assets/gifs/gaga36.gif"
+  "/assets/gifs/gaga37.gif"
+  "/assets/gifs/gaga38.gif"
+  "/assets/gifs/gaga39.gif"
 ]
 
 class Track
