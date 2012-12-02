@@ -24,11 +24,11 @@ class ApiController < ApplicationController
     track_json_array = Array.new
     if hash['resultCount'] > 0
       track_json_array = hash['results']
-      track_json_array.each { |track_json|
+      track_json_array.each do |track_json|
         if track_json['artistName'].downcase == artist_name
           save_track_from_json(track_json)
         end
-      }
+      end 
     else
       p "Oh... Something is wrong......"
     end
@@ -38,11 +38,11 @@ class ApiController < ApplicationController
 
   def get_track_list_from_db
     json_array = Array.new
-    tracks = Track.find(:all)
-    if tracks.length > 0
-      tracks.each { |track|
+    track_list = Track.find(:all)
+    if track_list.length > 0
+      track_list.each do |track|
         json_array.push(track.to_hash)
-      }
+      end
     end
 
     return json_array
