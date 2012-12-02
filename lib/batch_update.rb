@@ -13,7 +13,7 @@ class BatchUpdate
     puts("==== " + Time.now.to_s + " ====")
 
     not_found_id_list = Array.new
-    track_list = Track.find(:all, :limit => 2)
+    track_list = Track.find(:all)
     track_list.each do |track|
       p track
       if !exist?(track.preview_url)
