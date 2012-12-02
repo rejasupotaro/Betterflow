@@ -17,7 +17,9 @@ class BatchUpdate
     track_list.each do |track|
       p track
       if !exist?(track.preview_url)
+        puts "!!!not found!!!"
         not_found_id_list.push(track.id)
+      else
       end
     end
 
@@ -28,7 +30,7 @@ class BatchUpdate
       end
     end
 
-    puts("==== update done!!! ====")
+    puts("==== update done! ====")
   end
 
   def self.exist?(url)
@@ -36,7 +38,7 @@ class BatchUpdate
 
     open(url) do |file|
       status_code = file.status[0]
-      p status_code
+      puts url + " => " + status_code
       if file.status[0] == SC_OK
         result = true
       end
@@ -45,4 +47,3 @@ class BatchUpdate
     return result
   end
 end
-
