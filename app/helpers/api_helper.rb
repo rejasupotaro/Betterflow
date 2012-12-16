@@ -15,10 +15,31 @@ module ApiHelper
 
     track_json_list = Array.new
     if hash['resultCount'] > 0
-      track_json_list = hash['results']
+      hash['results'].each do |track_json|
+        if valid_json?(track_json)
+          track_json_list.push(track_json)
+        end
+      end
     end
 
     return track_json_list
+  end
+
+  def valid_json?(track_json)
+    if !Hash.try_convert(track_json)
+      return false
+    end
+
+    is_valid = (
+      (track_json.key?('artistName')) and
+      (track_json.key?('trackName')) and
+      (track_json.key?('trackViewUrl')) and
+      (track_json.key?('previewUrl')) and
+      (track_json.key?('artworkUrl100')) and
+      (track_json.key?('releaseDate'))
+    )
+
+    return is_valid
   end
 
   def save_track_to_db(track_json_list, artist_name)
