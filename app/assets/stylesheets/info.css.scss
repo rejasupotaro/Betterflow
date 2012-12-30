@@ -26,90 +26,74 @@
 }
 
 header {
-  transition: opacity 0.5s;
-  -webkit-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  opacity: 0.6;
+  transition: opacity 0.8s;
+  -webkit-transition: opacity 0.8s;
+  -moz-transition: opacity 0.8s;
+  opacity: 0.8;
   position: absolute;
   top: 0;
   left: 0;
   background-color: black;
   width: 100%;
-  height: 45px;
-}
-
-footer {
-  transition: opacity 0.5s;
-  -webkit-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  opacity: 0.6;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-color: black;
-  width: 100%;
-  height: 45px;
-}
-
-#container {
-  margin: auto 0;
-  padding-top: 72px;
+  height: 60px;
 }
 
 #panels {
-  transition: opacity 0.5s;
-  -webkit-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
-  opacity: 0.8;
-  border-spacing: 16px;
-  width: 350px;
-  height: 530px;
-  float: left;
+  border-spacing: 10px;
 }
 
-#panel {
-  background-color: #1BA1E2;
+.panel {
+  background-color: black;
   cursor: pointer;
   display: table-cell;
   text-align: center;
   vertical-align: middle;
 }
 
-#panel_image {
-  width: 120px;
-  height: 120px;
+.panel_image {
+  width: 40px;
+  height: 40px;
   vertical-align: middle;
 }
 
+#container {
+  margin: auto 0;
+  padding-top: 96px;
+}
+
 #better_flow {
-  padding-top: 14px;
-  padding-left: 30px;
-  float: left;
+  position: absolute;  
+  left: 50%;  
+  height: 100%;  
+  width: 1000px;
+  margin-left: -500px;
 }
 
 #track_top_title {
+  text-align: center;
   font-size: 92px;
-}
-
-#track_info_header {
-  font-size: 20px;
-  opacity: 0.8;
-  background-color: #222222;
 }
 
 #track_info {
   font-size: 26px;
-  width: 680px;
+  width: 1000px;
+}
+
+#track_info_header {
+  font-size: 24px;
+  opacity: 0.8;
+  background-color: #222222;
 }
 
 #track_info_body {
+  font-size: 32px;
 }
 
-#artist_name #track_name #release_date {
+#artist_name, #track_name, #release_date {
 }
 
 #jacket_image_wrapper {
-  width: 680px;
+  width: 1000px;
   height: 360px;
   display: table-cell;
   text-align: center;
@@ -121,8 +105,22 @@ footer {
   -moz-border-radius: 12px;
   border-radius: 12px;
   opacity: 0.8;
-  width: 240px;
-  height: 240px;
+  width: 280px;
+  height: 280px;
   object-fit: contain;
   vertical-align: middle;
 }
+
+footer {
+  transition: opacity 0.8s;
+  -webkit-transition: opacity 0.8s;
+  -moz-transition: opacity 0.8s;
+  opacity: 0.8;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 60px;
+}
+

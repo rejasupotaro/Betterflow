@@ -88,8 +88,8 @@ window.onload = ->
   set_track_info = (track) ->
     track_name = track.get_track_name()
     $("#track_name")[0].innerHTML = track_name
-    if track_name.length > 12
-      track_name = track_name.substring(0, 12) + "..."
+    if track_name.length > 18
+      track_name = track_name.substring(0, 18) + "..."
     $("#track_top_title")[0].innerHTML = track_name
     $("#artist_name")[0].innerHTML = track.get_artist_name()
     $("#release_date")[0].innerHTML = track.get_release_date()
